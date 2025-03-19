@@ -24,11 +24,10 @@ This is a Next.js application built with Tailwind CSS and TypeScript. The backen
 - Interestingly enough, Claude API was under an outage while working on the assignment, so I had to use OpenAI API.
 - I added support for the developer to delete Changelog bullet points and delete sections, and for the developer to edit the output of the OpenAI LLM-generated changelog. This is because LLMs may not always be accurate or phrase in such a way that the developer would want.
 
-## Explored Repositories
+## Explored / Tested Repositories
 
 - TailwindCSS
 - Browser Use
-- Next JS
 
 ## Reflection
 
