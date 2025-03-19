@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function Navbar() {
   return (
     <nav className="w-full h-16 border-b border-black/[.1] px-4">
@@ -9,7 +11,9 @@ export default function Navbar() {
           Developer View
         </a>
         <code className="font-[family-name:var(--font-geist-mono)] bg-black text-white px-4 py-1.5 rounded-md text-sm">
-          &#47;&#47; changelog
+          <Link href="/">
+            &#47;&#47; changelog
+          </Link>
         </code>
         <a 
           href="/user"
