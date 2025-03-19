@@ -17,6 +17,7 @@ This is a Next.js application built with Tailwind CSS and TypeScript. The backen
 ## Design Decisions
 
 - To make this as easy as possible, the developer just needed to copy and paste the GitHub repository URL. The developer can then review the changelog before committing the changes.
+- For each changelog section, there is a Title (which is initialized to today's date), and a list of bullet points the developer can edit.
 - I used OpenAI API since I knew the behavior of OpenAI the best. 
 - I initially wanted to use the code diff to summarize the commits; however, it seems like from most of the repositories that I look explored, the commit messages were already enough to accurately describe the changes made to the codebase.
   - A corollary however would be that, if the commit messages from the pull requests were poorly detailed, then the resulting changelog would also reflect the poor message documentation. Garbage In, Garbage Out. 

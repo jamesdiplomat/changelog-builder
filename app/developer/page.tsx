@@ -28,19 +28,24 @@ const acceptAllChanges = (
     setEntries: (_: string[]) => void, 
     changeLogContextObj: ChangelogContextObj, 
     setEditState: (_: EditState) => void, 
-    setRepoField: (_: string) => void
+    setRepoField: (_: string) => void,
+    setTitle: (_: string) => void,
+    setShowToast: (_: boolean) => void
 ) => {
     changeLogContextObj.setChangelog([...changeLogContextObj.changelog, { title: title, entries: entries }]);
     setEntries([]);
     setRepoField("");
     setEditState("before");
-
-    console.log(changeLogContextObj.changelog)
+    setTitle(`${new Date().toISOString().split('T')[0]} Updates`);
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 3000); // Hide after 3 seconds
+    console.log(changeLogContextObj.changelog);
 };
 
 export default function Page() {
     const [editState, setEditState] = useState<EditState>("before");
     const [repoField, setRepoField] = useState<string>("");
+    const [showToast, setShowToast] = useState(false);
     const repoFieldChange = setEventChange(setRepoField);
     const [entries, setEntries] = useState<string[]>([]);
     const [title, setTitle] = useState<string>(`${new Date().toISOString().split('T')[0]} Updates`);
@@ -114,13 +119,21 @@ export default function Page() {
                     {entries.length > 0 && (
                         <button
                             className="mt-6 px-6 py-3 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors w-full"
-                            onClick={(event: any) => {event.preventDefault(); acceptAllChanges(title, entries, setEntries, changeLogContextObj, setEditState, setRepoField)}}
+                            onClick={(event: any) => {
+                                event.preventDefault(); 
+                                acceptAllChanges(title, entries, setEntries, changeLogContextObj, setEditState, setRepoField, setTitle, setShowToast)
+                            }}
                         >
                             Accept All Changes
                         </button>
                     )}
                 </div>
             </div>
+            {showToast && (
+                <div className="fixed bottom-4 right-4 bg-green-600 text-white px-6 py-3 rounded-md shadow-lg animate-fade-in-out">
+                    Changes committed successfully
+                </div>
+            )}
         </div>    
     );
 }
